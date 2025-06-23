@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function Home() {
   return (
-    <div className="flex flex-col justify-center items-center text-center p-4 min-h-[80vh]">
+    <div className="flex flex-col justify-center items-center text-center p-4 min-h-[80vh] w-full max-w-5xl mx-auto">
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
