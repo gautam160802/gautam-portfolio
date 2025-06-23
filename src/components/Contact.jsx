@@ -1,118 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import XIcon from "../components/XIcon";
+import ParticlesBackground from "./ParticlesBackground";
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  function handleChange(e) {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert("Thank you for reaching out!");
-    setFormData({ name: "", email: "", message: "" });
-  }
-
   return (
-    <div className="flex flex-col justify-center items-center text-center p-8 min-h-screen max-w-4xl mx-auto">
+    <div className="relative flex flex-col justify-center items-center text-center p-8 min-h-screen">
+      <ParticlesBackground />
+
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-5xl font-bold mb-6"
+        className="text-5xl font-bold mb-10"
       >
-        Get In Touch
+        Contact Me
       </motion.h1>
 
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-        className="text-xl text-gray-300 mb-10"
+        transition={{ delay: 0.4, duration: 1 }}
+        className="text-xl text-gray-300 mb-12 max-w-3xl leading-relaxed"
       >
-        I'm always open to discuss new projects, product ideas, or
-        collaborations. Feel free to drop a message below!
+        Interested in working together? Reach out to me through any platform
+        below!
       </motion.p>
 
-      <motion.form
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 1 }}
-        className="w-full max-w-xl text-left bg-[#334155] p-8 rounded-lg shadow-lg"
-      >
-        <div className="mb-4">
-          <label className="block mb-2 text-lg">Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full p-3 rounded bg-[#475569] text-white outline-none"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block mb-2 text-lg">Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full p-3 rounded bg-[#475569] text-white outline-none"
-          />
-        </div>
-
-        <div className="mb-6">
-          <label className="block mb-2 text-lg">Message:</label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows="5"
-            className="w-full p-3 rounded bg-[#475569] text-white outline-none"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded w-full"
-        >
-          Send Message
-        </button>
-      </motion.form>
-
-      <div className="flex gap-8 text-4xl mt-10">
+      <div className="flex flex-col gap-6">
         <a
-          href="https://github.com/gautam160802"
-          target="_blank"
-          className="hover:text-blue-400"
+          href="mailto:gk17318@gmail.com"
+          className="bg-blue-500 text-white px-8 py-3 rounded font-semibold hover:bg-blue-600 transition"
         >
-          <FaGithub />
+          gk17318@gmail.com
         </a>
         <a
           href="https://www.linkedin.com/in/gautam-kumar-336a5221b/"
           target="_blank"
-          className="hover:text-blue-400"
+          className="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded font-semibold hover:bg-blue-500 hover:text-white transition"
         >
-          <FaLinkedin />
+          Connect on LinkedIn
         </a>
         <a
           href="https://x.com/Gautam_kum4r"
           target="_blank"
-          className="hover:text-blue-400"
+          className="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded font-semibold hover:bg-blue-500 hover:text-white transition"
         >
-          <XIcon size={40} />
+          Connect on X (Twitter)
         </a>
       </div>
     </div>

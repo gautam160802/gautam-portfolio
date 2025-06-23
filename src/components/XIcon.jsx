@@ -1,18 +1,15 @@
 import React from "react";
 
-function XIcon({ size = 32, className = "" }) {
+export default function XIcon({ size = 32 }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1200 1227"
       width={size}
       height={size}
-      className={className}
       fill="white"
+      viewBox="0 0 24 24"
     >
-      <path d="M1199.9 0H973.5L597.5 479 217.7 0H0L450.2 601.3 0 1227h226.3l399.6-518.2L984.4 1227H1200L747.1 630.6 1199.9 0z" />
+      <path d="M20 3h-3l-5 6-5-6H4l7 9-7 9h3l5-6 5 6h3l-7-9z" />
     </svg>
   );
 }
-
-export default XIcon;

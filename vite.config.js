@@ -6,4 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   darkMode: "class",
   plugins: [react(), tailwindcss()],
+  boxShadow: {
+    glow: "0 0 10px 2px rgba(59,130,246,0.8)",
+  },
 });
