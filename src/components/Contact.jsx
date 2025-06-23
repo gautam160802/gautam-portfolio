@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import XIcon from "./XIcon";
+import XIcon from "../components/XIcon";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -26,12 +26,28 @@ function Contact() {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-5xl font-bold mb-10"
+        className="text-5xl font-bold mb-6"
       >
         Get In Touch
       </motion.h1>
 
-      <form onSubmit={handleSubmit} className="w-full max-w-xl text-left">
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+        className="text-xl text-gray-300 mb-10"
+      >
+        I'm always open to discuss new projects, product ideas, or
+        collaborations. Feel free to drop a message below!
+      </motion.p>
+
+      <motion.form
+        onSubmit={handleSubmit}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 1 }}
+        className="w-full max-w-xl text-left bg-[#334155] p-8 rounded-lg shadow-lg"
+      >
         <div className="mb-4">
           <label className="block mb-2 text-lg">Name:</label>
           <input
@@ -40,7 +56,7 @@ function Contact() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full p-3 rounded bg-[#334155] text-white outline-none"
+            className="w-full p-3 rounded bg-[#475569] text-white outline-none"
           />
         </div>
 
@@ -52,11 +68,11 @@ function Contact() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full p-3 rounded bg-[#334155] text-white outline-none"
+            className="w-full p-3 rounded bg-[#475569] text-white outline-none"
           />
         </div>
 
-        <div className="mb-4">
+        <div className="mb-6">
           <label className="block mb-2 text-lg">Message:</label>
           <textarea
             name="message"
@@ -64,17 +80,17 @@ function Contact() {
             onChange={handleChange}
             required
             rows="5"
-            className="w-full p-3 rounded bg-[#334155] text-white outline-none"
+            className="w-full p-3 rounded bg-[#475569] text-white outline-none"
           ></textarea>
         </div>
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded w-full"
         >
-          Submit
+          Send Message
         </button>
-      </form>
+      </motion.form>
 
       <div className="flex gap-8 text-4xl mt-10">
         <a
