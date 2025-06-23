@@ -17,13 +17,24 @@ function App() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <nav className="flex justify-center space-x-8 py-6 text-lg font-semibold">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/experience">Experience</Link>
-          <Link to="/contact">Contact</Link>
+        <nav className="sticky top-0 bg-[#1e293b] bg-opacity-80 backdrop-blur-md flex justify-center flex-wrap items-center space-x-6 py-4 text-lg font-semibold shadow-md z-50">
+          <Link to="/" className="hover:text-blue-400 transition">
+            Home
+          </Link>
+          <Link to="/about" className="hover:text-blue-400 transition">
+            About
+          </Link>
+          <Link to="/projects" className="hover:text-blue-400 transition">
+            Projects
+          </Link>
+          <Link to="/experience" className="hover:text-blue-400 transition">
+            Experience
+          </Link>
+          <Link to="/contact" className="hover:text-blue-400 transition">
+            Contact
+          </Link>
         </nav>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

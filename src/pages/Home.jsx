@@ -1,5 +1,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import XIcon from "../components/XIcon";
+
 import { motion } from "framer-motion";
 
 function Home() {
@@ -49,6 +51,9 @@ function Home() {
           target="_blank"
         >
           <FaLinkedin />
+        </a>
+        <a href="https://x.com/Gautam_kum4r" target="_blank">
+          <XIcon size={32} />
         </a>
       </div>
     </div>

@@ -2,6 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+import XIcon from "../components/XIcon";
+
 function Contact() {
   return (
     <div className="flex flex-col justify-center items-center text-center p-4 min-h-[80vh] w-full max-w-5xl mx-auto">
@@ -34,6 +36,9 @@ function Contact() {
           target="_blank"
         >
           <FaLinkedin />
+        </a>
+        <a href="https://x.com/Gautam_kum4r" target="_blank">
+          <XIcon size={32} />
         </a>
       </div>
 
