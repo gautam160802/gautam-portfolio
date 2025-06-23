@@ -2,6 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import ParticlesBackground from "./ParticlesBackground";
 
+import greencartImg from "../assets/greencart.png";
+import quickshowImg from "../assets/quickshow.png";
+import jobportalImg from "../assets/jobportal.png";
+import infraImg from "../assets/infrawebsite.png";
+
 function Projects() {
   const projectData = [
     {
@@ -10,7 +15,7 @@ function Projects() {
         "Full online grocery platform with secure payments, authentication, cart, and admin dashboard.",
       tech: "React, Node.js, Express.js, MongoDB, Stripe, TailwindCSS",
       github: "https://github.com/gautam160802/greencart",
-      image: "https://via.placeholder.com/500x300?text=Green+Cart",
+      image: greencartImg,
     },
     {
       title: "QuickShow (Movie Ticket Booking)",
@@ -18,7 +23,7 @@ function Projects() {
         "Movie ticket booking app with search, seat selection, and payment integration.",
       tech: "React, Node.js, Express.js, MongoDB, Razorpay",
       github: "https://github.com/gautam160802/quickshow",
-      image: "https://via.placeholder.com/500x300?text=QuickShow",
+      image: quickshowImg,
     },
     {
       title: "Job Portal App",
@@ -26,7 +31,7 @@ function Projects() {
         "Job portal with recruiter dashboard, job posting, filters, applications and authentication.",
       tech: "React, Node.js, Express.js, MongoDB, Clerk, Sentry",
       github: "https://github.com/gautam160802/jobportal",
-      image: "https://via.placeholder.com/500x300?text=Job+Portal",
+      image: jobportalImg,
     },
     {
       title: "Infra Client Website (Freelance)",
@@ -34,7 +39,7 @@ function Projects() {
         "Professional business website for infrastructure industry client.",
       tech: "React, TailwindCSS, Responsive Design",
       github: "https://github.com/gautam160802/infraclient",
-      image: "https://via.placeholder.com/500x300?text=Infra+Client",
+      image: infraImg,
     },
   ];
 

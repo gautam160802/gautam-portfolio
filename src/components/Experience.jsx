@@ -1,29 +1,30 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ParticlesBackground from "./ParticlesBackground";
+import infraImg from "../assets/infrawebsite.png";
+import devsImg from "../assets/100xdevs.png";
 
 function Experience() {
   const experienceData = [
     {
-      title: "100xDevs MERN Stack Program",
+      title: "MERN Stack Certification",
+      organization: "100xDevs",
       description:
-        "Completed full stack program with live projects, problem-solving, and mentorship.",
+        "Completed full stack program with live projects, problem-solving, mentorship & real-world backend system designs.",
       duration: "2024",
-      image: "https://via.placeholder.com/500x300?text=100xDevs",
+      image: devsImg,
     },
     {
-      title: "Freelance Client - Infra Industry Website",
+      title: "Infra Client Website (Freelance)",
+      organization: "Private Infra Client",
       description:
-        "Delivered professional responsive client website for infrastructure business.",
-      duration: "Freelance Project",
-      image: "https://via.placeholder.com/500x300?text=Freelance",
+        "Delivered full responsive business website for infrastructure industry client as remote freelance contract.",
+      duration: "2024",
+      image: infraImg,
     },
   ];
 
   return (
     <div className="relative flex flex-col justify-center items-center p-8 min-h-screen">
-      <ParticlesBackground />
-
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -33,28 +34,31 @@ function Experience() {
         Experience & Certifications
       </motion.h1>
 
-      {experienceData.map((exp, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.3, duration: 1 }}
-          className="flex flex-col md:flex-row items-center gap-8 mb-16 max-w-5xl"
-        >
-          <img
-            src={exp.image}
-            alt={exp.title}
-            className="w-full md:w-[500px] rounded-lg shadow-lg"
-          />
-          <div className="text-left max-w-md">
-            <h2 className="text-3xl font-semibold mb-4">{exp.title}</h2>
-            <p className="text-gray-300 mb-4">{exp.description}</p>
-            <p>
-              <span className="font-semibold">Duration:</span> {exp.duration}
-            </p>
-          </div>
-        </motion.div>
-      ))}
+      <div className="relative border-l-2 border-blue-400 pl-8">
+        {experienceData.map((exp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.3, duration: 1 }}
+            viewport={{ once: true }}
+            className="mb-16 flex gap-8 items-center"
+          >
+            <img
+              src={exp.image}
+              alt={exp.title}
+              className="w-40 rounded-lg shadow-lg"
+            />
+            <div>
+              <h2 className="text-2xl font-semibold">{exp.title}</h2>
+              <p className="text-blue-300">
+                {exp.organization} • {exp.duration}
+              </p>
+              <p className="mt-2 text-gray-300">{exp.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
