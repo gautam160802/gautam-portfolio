@@ -15,10 +15,10 @@ function Contact() {
 
     emailjs
       .sendForm(
-        "your_service_id", // Replace
-        "your_template_id", // Replace
+        "portfolio", // Replace
+        "template_x0mt6cu", // Replace
         form.current,
-        "your_public_key" // Replace
+        "XmgCc8xO0IdU1SJ7A" // Replace
       )
       .then(
         (response) => {
