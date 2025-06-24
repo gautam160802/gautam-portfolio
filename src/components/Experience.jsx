@@ -1,64 +1,69 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ParticlesBackground from "./ParticlesBackground";
 
 function Experience() {
+  const experiences = [
+    {
+      title: "Freelance Web Developer (Infra Client Website)",
+      duration: "Jan 2024 - Mar 2024",
+      description:
+        "Built and delivered a full professional responsive business website for a real infrastructure company client. Managed end-to-end design, development, deployment and client support.",
+      tech: ["React", "TailwindCSS", "Responsive Design", "SEO Optimization"],
+    },
+    {
+      title: "100xDevs - Full Stack MERN Certification",
+      duration: "Completed in 2024",
+      description:
+        "Completed intensive hands-on full stack MERN training program led by 100xDevs with multiple live industry-level projects built from scratch.",
+      tech: [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express.js",
+        "REST APIs",
+        "Full Stack Architecture",
+      ],
+    },
+  ];
+
   return (
-    <div className="relative flex flex-col justify-center items-center p-8 min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e293b] dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-lg">
-      <ParticlesBackground />
-
-      <motion.h1
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+    <section id="experience" className="min-h-screen px-4 py-20">
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-5xl font-bold mb-12 text-center text-gray-100 dark:text-gray-200"
+        className="text-4xl font-bold mb-12 text-center"
       >
-        Experience
-      </motion.h1>
+        Experience & Certifications
+      </motion.h2>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="max-w-4xl"
-      >
-        <div className="mb-12 p-6 bg-black/40 dark:bg-gray-900/40 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-semibold mb-2 text-blue-400 dark:text-blue-300">
-            Infra Client Website (Freelance)
-          </h2>
-          <p className="text-gray-300 dark:text-gray-400 leading-relaxed mb-4">
-            Developed a professional, fully responsive business website for a
-            client in the infrastructure industry. Implemented modern React with
-            TailwindCSS styling and ensured cross-device compatibility.
-          </p>
-          <ul className="list-disc list-inside text-gray-400 dark:text-gray-500">
-            <li>React, TailwindCSS, Responsive Design</li>
-            <li>Custom UI components and animations</li>
-            <li>SEO best practices and accessibility</li>
-            <li>Deployed and maintained client site</li>
-          </ul>
-        </div>
+      <div className="flex flex-col gap-12 max-w-5xl mx-auto">
+        {experiences.map((exp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.3, duration: 1 }}
+            className="p-6 rounded-lg bg-gradient-to-br from-[#1e293b] to-[#0f172a] border border-blue-500/20 shadow-lg"
+          >
+            <h3 className="text-2xl font-semibold mb-2">{exp.title}</h3>
+            <p className="text-sm text-blue-400 mb-4">{exp.duration}</p>
+            <p className="text-gray-400 mb-4">{exp.description}</p>
 
-        <div className="p-6 bg-black/40 dark:bg-gray-900/40 rounded-lg shadow-lg">
-          <h2 className="text-3xl font-semibold mb-2 text-blue-400 dark:text-blue-300">
-            100xDevs Full Stack Developer Certification
-          </h2>
-          <p className="text-gray-300 dark:text-gray-400 leading-relaxed mb-4">
-            Successfully completed the 100xDevs intensive full stack development
-            bootcamp. Gained hands-on experience building multiple projects
-            using MERN stack technologies with best practices in authentication,
-            deployment, and product delivery.
-          </p>
-          <ul className="list-disc list-inside text-gray-400 dark:text-gray-500">
-            <li>Full Stack Web Development</li>
-            <li>Authentication & Authorization</li>
-            <li>REST API Development</li>
-            <li>Deployment with Vercel & Heroku</li>
-            <li>Version control with GitHub</li>
-          </ul>
-        </div>
-      </motion.div>
-    </div>
+            <div className="flex flex-wrap gap-2">
+              {exp.tech.map((tech, i) => (
+                <span
+                  key={i}
+                  className="bg-blue-500/20 border border-blue-400 text-blue-300 px-3 py-1 rounded-full text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 }
 

@@ -1,151 +1,185 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import XIcon from "./XIcon";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { SiX } from "react-icons/si";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
-  return (
-    <div className="relative flex flex-col items-center p-8 min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e293b] dark:from-gray-900 dark:to-gray-800 text-white">
-      {/* Text Logo */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="mb-8"
-      >
-        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-          GautamK.
-        </h1>
-      </motion.div>
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
 
-      {/* Section Header */}
-      <motion.h1
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "your_service_id", // Replace
+        "your_template_id", // Replace
+        form.current,
+        "your_public_key" // Replace
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.text);
+          setResult("success");
+          setLoading(false);
+          form.current.reset();
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setResult("error");
+          setLoading(false);
+        }
+      );
+  };
+
+  return (
+    <section
+      id="contact"
+      className="min-h-screen px-4 py-20 bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-5xl font-extrabold text-center mb-6 tracking-wide"
+        className="text-4xl font-bold mb-12 text-center"
       >
         Let's Connect
-      </motion.h1>
+      </motion.h2>
 
-      {/* Sub email */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="text-lg text-gray-400 mb-10"
-      >
-        Drop me a message at:
-        <span className="text-blue-400 ml-2">gk17318@gmail.com</span>
-      </motion.p>
-
-      {/* Social Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.8 }}
-        className="flex gap-10 mb-14"
-      >
-        <a
-          href="https://www.linkedin.com/in/gautam-kumar-336a5221b/"
-          target="_blank"
-          rel="noreferrer"
-          className="group flex flex-col items-center transition"
+      <div className="flex flex-col md:flex-row justify-center items-center gap-20">
+        {/* Left Socials */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="flex flex-col items-center gap-6"
         >
-          <FaLinkedin className="text-4xl text-gray-300 group-hover:text-blue-500 transition duration-300" />
-          <span className="text-sm mt-2 group-hover:text-blue-300">
-            LinkedIn
-          </span>
-        </a>
-        <a
-          href="https://x.com/Gautam_kum4r"
-          target="_blank"
-          rel="noreferrer"
-          className="group flex flex-col items-center transition"
+          <p className="text-lg text-gray-400">Reach me anytime 👇</p>
+
+          <div className="flex gap-8 text-4xl text-blue-400">
+            <a
+              href="https://www.linkedin.com/in/gautam-kumar-336a5221b/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-500 transition"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://x.com/Gautam_kum4r"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-500 transition"
+            >
+              <SiX />
+            </a>
+            <a
+              href="https://github.com/gautam160802"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-500 transition"
+            >
+              <FaGithub />
+            </a>
+          </div>
+
+          <p className="text-sm text-gray-500 mt-4">
+            Or email me directly:{" "}
+            <a
+              href="mailto:gk17318@gmail.com"
+              className="text-blue-400 hover:underline"
+            >
+              gk17318@gmail.com
+            </a>
+          </p>
+        </motion.div>
+
+        {/* Right Form */}
+        <motion.form
+          ref={form}
+          onSubmit={sendEmail}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          className="w-full max-w-md bg-gradient-to-br from-[#1e293b] to-[#0f172a] rounded-lg p-8 border border-blue-500/20 shadow-lg"
         >
-          <XIcon className="text-4xl text-gray-300 group-hover:text-blue-500 transition duration-300" />
-          <span className="text-sm mt-2 group-hover:text-blue-300">
-            X (Twitter)
-          </span>
-        </a>
-        <a
-          href="https://github.com/gautam160802"
-          target="_blank"
-          rel="noreferrer"
-          className="group flex flex-col items-center transition"
-        >
-          <FaGithub className="text-4xl text-gray-300 group-hover:text-blue-500 transition duration-300" />
-          <span className="text-sm mt-2 group-hover:text-blue-300">GitHub</span>
-        </a>
-      </motion.div>
+          <div className="mb-6">
+            <label className="block text-gray-300 font-semibold mb-2">
+              Name
+            </label>
+            <input
+              name="name"
+              type="text"
+              required
+              className="w-full px-4 py-3 rounded bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Your Name"
+            />
+          </div>
 
-      {/* Beautiful Form */}
-      <motion.form
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 1 }}
-        className="w-full max-w-2xl bg-white/5 backdrop-blur-lg p-10 rounded-2xl shadow-2xl space-y-6"
-      >
-        <div>
-          <label className="block mb-2 text-blue-300 font-semibold">Name</label>
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="w-full px-4 py-3 rounded-md bg-gray-800/50 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+          <div className="mb-6">
+            <label className="block text-gray-300 font-semibold mb-2">
+              Email
+            </label>
+            <input
+              name="email"
+              type="email"
+              required
+              className="w-full px-4 py-3 rounded bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="you@example.com"
+            />
+          </div>
 
-        <div>
-          <label className="block mb-2 text-blue-300 font-semibold">
-            Email
-          </label>
-          <input
-            type="email"
-            placeholder="you@example.com"
-            className="w-full px-4 py-3 rounded-md bg-gray-800/50 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+          <div className="mb-6">
+            <label className="block text-gray-300 font-semibold mb-2">
+              Phone
+            </label>
+            <input
+              name="phone"
+              type="text"
+              required
+              className="w-full px-4 py-3 rounded bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="+91-xxxxxxx"
+            />
+          </div>
 
-        <div>
-          <label className="block mb-2 text-blue-300 font-semibold">
-            Phone No
-          </label>
-          <input
-            type="tel"
-            placeholder="+91 1234567890"
-            className="w-full px-4 py-3 rounded-md bg-gray-800/50 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+          <div className="mb-6">
+            <label className="block text-gray-300 font-semibold mb-2">
+              Message
+            </label>
+            <textarea
+              name="message"
+              rows="5"
+              required
+              className="w-full px-4 py-3 rounded bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Your message..."
+            />
+          </div>
 
-        <div>
-          <label className="block mb-2 text-blue-300 font-semibold">
-            Message
-          </label>
-          <textarea
-            rows="4"
-            placeholder="Your message..."
-            className="w-full px-4 py-3 rounded-md bg-gray-800/50 border border-gray-700 text-white resize-none focus:ring-2 focus:ring-blue-500"
-          ></textarea>
-        </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded transition"
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Submit"}
+          </button>
 
-        <button
-          type="submit"
-          className="w-full py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:brightness-110 text-white font-bold rounded-md transition text-lg"
-        >
-          Submit
-        </button>
-      </motion.form>
-
-      <p className="mt-8 text-sm text-gray-500 text-center">
-        Or email directly at{" "}
-        <a
-          href="mailto:gk17318@gmail.com"
-          className="text-blue-400 hover:underline"
-        >
-          gk17318@gmail.com
-        </a>
-      </p>
-    </div>
+          {/* Result Message */}
+          {result === "success" && (
+            <p className="mt-4 text-green-400 text-center">
+              Message sent successfully! ✅
+            </p>
+          )}
+          {result === "error" && (
+            <p className="mt-4 text-red-400 text-center">
+              Something went wrong ❌
+            </p>
+          )}
+        </motion.form>
+      </div>
+    </section>
   );
 }
 

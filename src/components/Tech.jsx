@@ -1,44 +1,73 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-const techStack = [
-  { name: "React", color: "from-blue-400 to-blue-600" },
-  { name: "Next.js", color: "from-gray-700 to-gray-900" },
-  { name: "Node.js", color: "from-green-400 to-green-600" },
-  { name: "Express.js", color: "from-gray-500 to-gray-700" },
-  { name: "MongoDB", color: "from-green-600 to-green-800" },
-  { name: "TailwindCSS", color: "from-teal-400 to-teal-600" },
-  { name: "TypeScript", color: "from-blue-600 to-blue-800" },
-  { name: "REST APIs", color: "from-pink-400 to-pink-600" },
-  { name: "GitHub", color: "from-gray-600 to-gray-800" },
-  { name: "Vercel", color: "from-purple-500 to-purple-700" },
-];
+import { FaReact, FaNodeJs, FaGithub, FaDatabase } from "react-icons/fa";
+import {
+  SiMongodb,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiExpress,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
 
 function Tech() {
-  return (
-    <div className="relative flex flex-col justify-center items-center text-center p-8 min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e293b] dark:from-gray-900 dark:to-gray-800 rounded-lg shadow-lg">
-      <motion.h1
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="text-5xl font-bold mb-10 text-gray-100 dark:text-gray-200"
-      >
-        Tech Stack
-      </motion.h1>
+  const techStack = [
+    { name: "React", icon: <FaReact className="text-sky-400" size={50} /> },
+    { name: "Next.js", icon: <SiNextdotjs className="text-white" size={50} /> },
+    {
+      name: "Node.js",
+      icon: <FaNodeJs className="text-green-400" size={50} />,
+    },
+    { name: "Express", icon: <SiExpress className="text-white" size={50} /> },
+    {
+      name: "MongoDB",
+      icon: <SiMongodb className="text-green-500" size={50} />,
+    },
+    {
+      name: "TailwindCSS",
+      icon: <SiTailwindcss className="text-sky-300" size={50} />,
+    },
+    {
+      name: "TypeScript",
+      icon: <SiTypescript className="text-blue-400" size={50} />,
+    },
+    { name: "GitHub", icon: <FaGithub className="text-white" size={50} /> },
+    { name: "Vercel", icon: <SiVercel className="text-white" size={50} /> },
+    {
+      name: "Database",
+      icon: <FaDatabase className="text-yellow-300" size={50} />,
+    },
+  ];
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-4xl w-full">
-        {techStack.map(({ name, color }, i) => (
+  return (
+    <section
+      id="tech"
+      className="min-h-screen flex flex-col justify-center items-center px-4 py-20"
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-4xl font-bold mb-12 text-center"
+      >
+        My Tech Stack
+      </motion.h2>
+
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+        {techStack.map((tech, index) => (
           <motion.div
-            key={i}
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className={`bg-gradient-to-br ${color} rounded-lg shadow-lg p-6 cursor-pointer text-white font-semibold text-lg`}
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.8 }}
+            className="flex flex-col items-center space-y-3 hover:scale-110 transition"
           >
-            {name}
+            {tech.icon}
+            <span className="text-sm text-gray-300">{tech.name}</span>
           </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
